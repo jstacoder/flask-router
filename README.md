@@ -29,3 +29,24 @@
                 ('/sub',sub_view),
             )
         ```
+
+#### To Use:
+    * `pip install flask-router`
+    * then import it:
+            ```python
+                from flask_router import FlaskRouter
+            ```
+    * Then setup your app:
+      - standard way, ie: w/o factory pattern:
+      ```python
+            router = FlaskRouter(app)
+        ```
+      - w/factory pattern:
+      ```python
+            router = FlaskRouter()
+      ```
+      then later
+      ```python
+            router.init_app(app)
+      ```
+
