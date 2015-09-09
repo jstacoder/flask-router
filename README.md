@@ -54,7 +54,7 @@
     then later  
 
     ```python
-            router.init_app(app)
+        router.init_app(app)
     ```  
 
 
