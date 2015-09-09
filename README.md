@@ -4,7 +4,7 @@
   + Combine your blueprints routes into a `urls.py` file
   + Can register unknown blueprints that provide routes by setting `REGISTER_BLUEPRINTS` to True
   + All of your route definitions in one place
-  + Unlike Django no regex knowlegde needed to define routes   (although it is using regex you just dont have to care)
+  + Unlike Django no regex knowlegde needed to define routes<br/>(although it is using regex you just dont have to care)
   + standard, easy to remember, route definition syntax
     - Using class-based-views: `( (bp,),(url,endpoint,view) )`
         
