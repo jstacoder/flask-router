@@ -75,9 +75,10 @@ class FlaskRouter(object):
                     pattern,view = itm
                     endpoint = None            
                 if self.app.config.get('VERBOSE',False):
-                    print '\t\tplugging url Pattern:{pattern}\n\t\tinto View class/function:{name}\n\t\tat endpoint:{endpoint}\n'.format(
+                    print '\t\tplugging url Pattern: {pattern}\n\t\tinto View class/function:{name}\n\t\tat endpoint:{endpoint}\n'.format(
                         pattern=pattern,
-                        name=hasattr(view,'func_name') and view.view_class.__name__ or view.__name__,
+                        name=(hasattr(view,'func_name') and hasattr(view,'view_class')) and\
+                                view.view_class.__name__ or view.__name__,
                         endpoint=endpoint or view.func_name,
                     )
                 if type(blueprint) == type(tuple()):
@@ -85,4 +86,6 @@ class FlaskRouter(object):
                 blueprint.add_url_rule(pattern,endpoint or view.func_name,view_func=hasattr(view,'func_name') and view or view.as_view(endpoint))
             if self._register_blueprints:
                 if not self._is_blueprint_registered(blueprint):
+                    if self.app.config.get('VERBOSE',False):
+                        print 'Registering blueprint {} named {} on the app'.format(blueprint,blueprint.name)
                     self.app.register_blueprint(blueprint)
